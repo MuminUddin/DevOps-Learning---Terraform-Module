@@ -1,13 +1,13 @@
 variable "instance_type" {
-    type = string
+  type = string
 }
 
 variable "ami" {
-    type = string
+  type = string
 }
 
 variable "availability_zone" {
-    type = string
+  type = string
 }
 
 # variable "public_ip" {
@@ -16,8 +16,8 @@ variable "availability_zone" {
 # }
 
 variable "vpc_cidr" {
-    description = "cidr block for the vpc"
-    type = string
+  description = "cidr block for the vpc"
+  type        = string
 }
 
 # output "subnet_id" {

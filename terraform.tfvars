@@ -1,5 +1,5 @@
-instance_type = "t2.micro"
-ami = "ami-046c2381f11878233"
+instance_type     = "t2.micro"
+ami               = "ami-046c2381f11878233"
 availability_zone = "eu-west-2a"
 # public_ip = "82.9.71.113/32"
 vpc_cidr = "10.0.0.0/16"

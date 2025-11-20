@@ -1,14 +1,14 @@
 module "vpc" {
-  source = "./modules/vpc"
+  source            = "./modules/vpc"
   availability_zone = var.availability_zone
-  vpc_cidr = var.vpc_cidr
+  vpc_cidr          = var.vpc_cidr
 }
 
 module "ec2" {
-  source = "./modules/ec2"
-  ami = var.ami
-  instance_type = var.instance_type
-  subnet_id = module.vpc.subnet_id
+  source            = "./modules/ec2"
+  ami               = var.ami
+  instance_type     = var.instance_type
+  subnet_id         = module.vpc.subnet_id
   security_group_id = [module.security.security_group_id]
 }
 
@@ -54,7 +54,7 @@ module "security" {
 # resource "aws_route_table_association" "rta" {
 #   route_table_id = aws_route_table.rt.id
 #   subnet_id = aws_subnet.public.id
-  
+
 # }
 
 # resource "aws_instance" "wordpress_server" {
