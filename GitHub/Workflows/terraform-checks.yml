@@ -1,0 +1,47 @@
+name: Terraform Checks
+
+on: 
+  push:
+    branches: [main]
+    paths: 
+      - "**/*.tf"
+      - ".tflint.hcl"
+
+  pull_request:
+    branches: [main]
+    paths: 
+      - "**/*.tf"
+      - ".tflint.hcl"
+
+jobs:
+  terraform-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: terraform setup
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.14.0"
+
+      - name: terraform fmt
+        run: terraform fmt -check
+
+      - name: terraform init
+        run: terraform init -backend=false
+
+      - name: terraform validate
+        run: terraform validate
+
+      - name: tflint setup
+        uses: terraform-linters/setup-tflint@v6
+        with:
+          tflint_version: v0.52.0
+      
+      - name: initialise tflint
+        run: tflint --init
+      
+      - name: run tflint
+        run: tflint
