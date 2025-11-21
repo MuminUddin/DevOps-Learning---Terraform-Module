@@ -1,5 +1,5 @@
 variable "instance_type" {
-  type = number
+  type = string
 }
 
 variable "ami" {
